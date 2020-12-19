@@ -5,9 +5,14 @@ import { Question } from 'src/app/objects/question';
 @Component({
   selector: 'qom-question',
   template: `
-    <p>
       {{question.question}}
-    </p>
+      <table *ngFor="let answer of question.answers">
+        <tr>
+          <td>
+            {{answer}}
+          </td>
+        </tr>
+      </table>
   `,
   styles: [
   ]
