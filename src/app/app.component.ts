@@ -3,7 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'qom-root',
   template: `
-    <qom-navbar></qom-navbar>
+    <mat-drawer-container>
+      <mat-drawer #side_menu mode="side">
+        <qom-menu></qom-menu>
+      </mat-drawer>
+    <mat-drawer-container>
+    <qom-navbar title="Quizz-O-Max" [menu]="side_menu"></qom-navbar>
     <div style="text-align:center" class="content">
       <h1>
         Welcome to {{title}}!
@@ -14,5 +19,5 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'quizz-o-max';
+  title = "Quizz'O Max";
 }

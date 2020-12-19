@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'qom-navbar',
   template: `
     <p>
       <mat-toolbar>
-        <button mat-icon-button class="example-icon" aria-label="Menu button with icon">
+        <button (click)="menu.toggle()" mat-icon-button aria-label="Menu button with icon">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>My App</span>
+        <span>{{title}}</span>
         <span class="spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
-        </button>
+
+        <a target="_blank" href="https://github.com/yadev83/quizz-o-max">
+          <button mat-icon-button class="example-icon" aria-label="Get to github page" href="github.com">
+            <mat-icon>share</mat-icon>
+          </button>
+        </a>
     </mat-toolbar>
     </p>
   `,
@@ -24,6 +24,8 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class NavbarComponent implements OnInit {
+  @Input() title;
+  @Input() menu;
 
   constructor() { }
 
