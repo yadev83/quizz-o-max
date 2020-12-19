@@ -11,17 +11,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { NavbarComponent } from './components/front/navbar.component';
 import { MenuComponent } from './components/front/menu.component';
+import { QuestionComponent } from './components/back/question.component';
+import { QuestionsComponent } from './components/back/questions.component';
+import { QuizzapiService } from './services/quizzapi.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MenuComponent,
+    QuestionsComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
@@ -29,7 +37,7 @@ import { MenuComponent } from './components/front/menu.component';
     MatToolbarModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [QuizzapiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
     <qom-navbar title="Quizz-O-Max" [menu]="side_menu"></qom-navbar>
     <div style="text-align:center" class="content">
       <h1>
-        Welcome to {{title}}!
+        <qom-questions></qom-questions>
       </h1>
     </div>
     <router-outlet></router-outlet>
