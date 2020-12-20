@@ -14,8 +14,7 @@ import { Question } from 'src/app/objects/question';
         </tr>
       </table>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class QuestionComponent implements OnInit {
   @Input() question: Question;

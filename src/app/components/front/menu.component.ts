@@ -7,10 +7,10 @@ import { MatDrawer } from '@angular/material/sidenav';
   selector: 'qom-menu',
   template: `
     <div id="menu-content">
-      <button mat-button>Index</button>
-      <button mat-button>Play</button>
-      <button mat-button>Highscores</button>
-      <button mat-button>About</button>
+      <a routerLink="/home" routerLinkActive="selected-menu"><button mat-button>Index</button></a>
+      <a routerLink="/play" routerLinkActive="selected-menu"><button mat-button>Play</button></a>
+      <a routerLink="/scores" routerLinkActive="selected-menu"><button mat-button>Highscores</button></a>
+      <a routerLink="/about" routerLinkActive="selected-menu"><button mat-button>About</button></a>
     </div>
   `,
   styles: [

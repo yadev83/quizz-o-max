@@ -10,11 +10,8 @@ import { Component } from '@angular/core';
     <mat-drawer-container>
     <qom-navbar title="Quizz-O-Max" [menu]="side_menu"></qom-navbar>
     <div style="text-align:center" class="content">
-      <h1>
-        <qom-questions></qom-questions>
-      </h1>
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
   `,
   styles: []
 })

@@ -18,6 +18,10 @@ import { MenuComponent } from './components/front/menu.component';
 import { QuestionComponent } from './components/back/question.component';
 import { QuestionsComponent } from './components/back/questions.component';
 import { QuizzapiService } from './services/quizzapi.service';
+import { HomeComponent } from './components/front/home.component';
+import { PlayComponent } from './components/front/play.component';
+import { ScoresComponent } from './components/front/scores.component';
+import { AboutComponent } from './components/front/about.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { QuizzapiService } from './services/quizzapi.service';
     MenuComponent,
     QuestionsComponent,
     QuestionComponent,
+    HomeComponent,
+    PlayComponent,
+    ScoresComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
