@@ -9,11 +9,13 @@ import { Component } from '@angular/core';
       </mat-drawer>
     <mat-drawer-container>
     <qom-navbar title="Quizz-O-Max" [menu]="side_menu"></qom-navbar>
-    <div style="text-align:center" class="content">
+    <div class="content">
       <router-outlet></router-outlet>
     </div>
   `,
-  styles: []
+  styles: [
+    ".content{margin:10px;}"
+  ]
 })
 export class AppComponent {
   title = "Quizz'O Max";
