@@ -58,12 +58,7 @@ import { Component, OnInit } from '@angular/core';
       </div>
     </div>
   `,
-  styles: [
-    ".flex-container-col{display:flex; flex-direction:column; flex-wrap:wrap; width:65%;}",
-    ".flex-item:hover{background-color:#f5f5f5; flex-grow:1;}",
-    "h1{width:100%; text-align:center;}",
-    ".center{display:block;margin-left: auto;margin-right: auto;}"
-  ]
+  styles: []
 })
 export class HomeComponent implements OnInit {
   constructor() { }
