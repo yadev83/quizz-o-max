@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
   selector: 'qom-play',
   template: `
     <p>
-      play works!
       <qom-questions></qom-questions>
     </p>
   `,

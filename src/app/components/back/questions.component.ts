@@ -5,14 +5,8 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
 @Component({
   selector: 'qom-questions',
   template: `
-    <h3>Number of Questions : {{this.quizzApiService.getAll().length}}</h3>
-    <ul>
-      <li *ngFor="let question of this.quizzApiService.getAll()">
-        <div>
-          <qom-question [question]="question"></qom-question>
-        </div>
-      </li>
-    </ul>
+    <h1>Number of Questions : {{this.quizzApiService.getAll().length}}</h1>
+    <qom-question *ngFor="let question of this.quizzApiService.getAll()" [question]="question"></qom-question>
   `,
   styles: [
   ]

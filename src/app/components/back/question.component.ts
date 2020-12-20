@@ -5,14 +5,15 @@ import { Question } from 'src/app/objects/question';
 @Component({
   selector: 'qom-question',
   template: `
-      {{question.question}}
-      <table *ngFor="let answer of question.answers">
-        <tr>
-          <td>
-            {{answer}}
-          </td>
-        </tr>
-      </table>
+      <div class="flex-container-col center">
+        <div class="flex-item space-top">
+          <p class="question">{{question.question}}</p>
+        </div>
+        <hr />
+        <div class="flex-container space-top">
+          <button class="flex-item" mat-button *ngFor="let answer of question.answers">{{answer}}</button>
+        </div>
+      </div>
   `,
   styles: []
 })
