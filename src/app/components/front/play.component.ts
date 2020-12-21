@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { format } from 'path';
 import { QuizzapiService } from 'src/app/services/quizzapi.service';
 
 @Component({
