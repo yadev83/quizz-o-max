@@ -13,6 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './components/front/navbar.component';
 import { MenuComponent } from './components/front/menu.component';
@@ -23,6 +24,7 @@ import { HomeComponent } from './components/front/home.component';
 import { PlayComponent } from './components/front/play.component';
 import { ScoresComponent } from './components/front/scores.component';
 import { AboutComponent } from './components/front/about.component';
+import { NewgameFormComponent } from './components/back/newgame-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { AboutComponent } from './components/front/about.component';
     PlayComponent,
     ScoresComponent,
     AboutComponent,
+    NewgameFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,9 @@ import { AboutComponent } from './components/front/about.component';
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [QuizzapiService],
   bootstrap: [AppComponent]

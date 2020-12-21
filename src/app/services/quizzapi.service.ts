@@ -13,13 +13,13 @@ import { apiResponse } from '../objects/apiResponse';
 export class QuizzapiService {
   private apiUrl = environment.openquizz;
 
-  questions: Array<Question> = [];
+  private questions: Array<Question> = [];
 
   constructor(private http: HttpClient) {
-    this.getRandom(10);
+    //this.getRandom(10);
   }
 
-  private getRandom(amount){
+  getRandom(amount){
     this.questions = [];
     this.http.get<apiResponse>(this.apiUrl + "amount=" + amount).subscribe((data) => {
       for(let result of data.results){
