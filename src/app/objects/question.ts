@@ -21,6 +21,14 @@ export class Question{
       this.answers.push(this.format_html(option));
     }
     this.answers.push(this.correct_answer);
+    this.shuffleAnswers();
+  }
+
+  private shuffleAnswers() {
+    for (let i = this.answers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [this.answers[i], this.answers[j]] = [this.answers[j], this.answers[i]];
+    }
   }
 
   private format_html(str): string{

@@ -1,4 +1,5 @@
-import { Input } from '@angular/core';
+import { EventEmitter, Input } from '@angular/core';
+import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/app/objects/question';
 
@@ -11,7 +12,11 @@ import { Question } from 'src/app/objects/question';
         </div>
         <hr />
         <div class="flex-container space-top">
-          <button class="flex-item" mat-button *ngFor="let answer of question.answers">{{answer}}</button>
+          <div class="flex-item">
+            <button mat-button *ngFor="let answer of question.answers" (click)="answer===question.correct_answer ? right() : wrong()">
+                {{answer}}
+            </button>
+          </div>
         </div>
       </div>
   `,
@@ -20,9 +25,21 @@ import { Question } from 'src/app/objects/question';
 export class QuestionComponent implements OnInit {
   @Input() question: Question;
 
+  @Output() answering = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  right(): void{
+    this.answering.emit(+50);
+    console.log("Right !");
+  }
+
+  wrong(): void{
+    this.answering.emit(-50);
+    console.log("Wrong !");
   }
 
 }
