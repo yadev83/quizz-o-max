@@ -1,0 +1,20 @@
+{
+  "scores": [
+    {
+      "base_value": 50,
+      "amount": 100,
+      "nb_questions": 10,
+      "uname": "Quizzer",
+      "valid_answers": 1,
+      "id": 1
+    },
+    {
+      "base_value": 50,
+      "amount": 450,
+      "nb_questions": 10,
+      "uname": "Yanis",
+      "valid_answers": 9,
+      "id": 2
+    }
+  ]
+}
