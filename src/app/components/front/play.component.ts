@@ -6,7 +6,7 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
   template: `
     <qom-newgame-form #form></qom-newgame-form>
     <div *ngIf="!form.showForm && !end">
-      <qom-questions (finished)="onEnd($event)" [nb]="form.nbQuestions"></qom-questions>
+      <qom-questions (finished)="onQuizzEnd($event)" [nb]="form.nbQuestions" [cat]="form.category" [difficulty]="form.difficulty"></qom-questions>
     </div>
 
     <div *ngIf="end">
@@ -26,7 +26,7 @@ export class PlayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onEnd(event){
+  onQuizzEnd(event){
     this.end = true;
     this.final_score = event;
   }

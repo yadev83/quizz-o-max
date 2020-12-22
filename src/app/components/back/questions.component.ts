@@ -2,15 +2,16 @@ import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { Question } from 'src/app/objects/question';
+import { Score } from 'src/app/objects/score';
 import { QuizzapiService } from 'src/app/services/quizzapi.service';
 
 @Component({
   selector: 'qom-questions',
   template: `
-    <h1>Quizz : Question {{current_question}} / {{this.quizzService.getAll().length}} - Score : {{score}}</h1>
+    <h1>Quizz : Question {{current_question}} / {{this.quizzService.getQuestions().length}} - Score : {{score.amount}}</h1>
     <div class="flex-container-col center">
-      <div class="flex-item" *ngIf="this.quizzService.getAll().length!=0">
-        <qom-question (answering)="onAnswer($event)" [question]="this.quizzService.getAll()[current_question-1]"></qom-question>
+      <div class="flex-item" *ngIf="this.quizzService.getQuestions().length!=0">
+        <qom-question (answering)="onAnswer($event)" [question]="this.quizzService.getQuestions()[current_question-1]"></qom-question>
       </div>
     </div>
   `,
@@ -19,27 +20,45 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
 })
 export class QuestionsComponent implements OnInit {
   @Input() nb: number;
-  current_question = 1;
-  score = 0;
+  @Input() cat: number;
+  @Input() difficulty: string;
+
+  score_step: number = 50;
+
+  current_question = 0;
+  score: Score;
 
   @Output() finished = new EventEmitter<number>();
 
   constructor(public quizzService: QuizzapiService) {
+    if(this.cat != -1)
+      this.score_step = this.score_step * 0.5;
   }
 
   ngOnInit(): void {
     //Setting up base score
-    this.score = this.nb*20;
-    this.quizzService.getRandom(this.nb);
+    this.quizzService.initQuestions(this.nb, this.cat, this.difficulty);
+    this.score = new Score([], 0);
   }
 
   onAnswer(event){
-    this.score += event;
+    if(event == -2){
+      if(this.current_question == 0){
+        this.score = new Score(this.quizzService.getQuestions(), 50);
+      }else{
+        console.error("Unexpected answer from the question page");
+      }
+    }
 
-    if(this.current_question != this.quizzService.getAll().length){
+    if(event == -1)
+      this.score.invalidateQuestion(this.quizzService.getQuestions()[this.current_question-1]);
+    else if(event == 1)
+      this.score.validateQuestion(this.quizzService.getQuestions()[this.current_question-1]);
+
+    if(this.current_question != this.quizzService.getQuestions().length){
       this.current_question++;
     }else{
-      this.finished.emit(this.score);
+      this.finished.emit(this.score.amount);
     }
   }
 

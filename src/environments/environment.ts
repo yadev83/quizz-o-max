@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  openquizz: 'https://opentdb.com/api.php?'
+  openquizz: 'https://opentdb.com/api.php?',
+  categories: 'https://opentdb.com/api_category.php'
 };
 
 /*

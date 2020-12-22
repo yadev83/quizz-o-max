@@ -3,10 +3,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.flex-container{display:flex; justify-content:center;}
-.flex-container-col{display:flex; flex-direction:column; flex-wrap:wrap; width:65%;}
-.flex-item{padding:25px;}
+.flex-container{width: 65%;display:flex;}
+.flex-container-col{display:flex; flex-direction:column;flex-wrap:wrap; width:65%;}
+.flex-item{padding:25px; width:100%;flex-grow: 1;}
 .flex-item:hover{background-color:#f5f5f5;}
+.inner-element{margin-left: auto;margin-right: auto;width: 100%;padding:25px;}
 h1{width:100%; text-align:center;}
 .center{display:block;margin-left: auto;margin-right: auto;}
 code {background-color: #eee;border: 1px solid #eee;display: block;padding: 20px;}
@@ -14,3 +15,6 @@ table {width: 100%;}
 td {text-align:center;}
 .question {text-align:center; font-style:bold; font-size:15pt;}
 .space-top {margin-top:100px;}
+/* FORMS */
+input,select{width: 100%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;border-radius: 4px;}
+input:focus{background-color: #dde;}
