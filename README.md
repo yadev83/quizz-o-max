@@ -88,5 +88,13 @@ Obviously, it contains the string for the correct answer to the question.
 # Incorrect_answers
 Is an array of all the 3 answers that are not right for this question. To display answers on screen, I created an array made of the concatenation of both correct and incorrect answers and shuffled them to make sure the correct answer ins't always at the same spot.
 
+## TODO
+Considering the fact that this app is working, I could still add some things to it :
+- A timer telling you how much time you spent on every question
+- A dark theme
+- Docker files to hold the app and the json-server
+- Writing transcription for every "&...;" special character. 
+- A multiplayer mode with synchronisation (could be a lot of work).
+
 ## License
 [GPL](https://choosealicense.com/licenses/gpl-3.0/)

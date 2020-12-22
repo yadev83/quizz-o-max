@@ -38,6 +38,8 @@ export class Question{
     result = result.replace(/&ldquo;/g, '\“');
     result = result.replace(/&rdquo;/g, '\”');
     result = result.replace(/&#039;/g, '\'');
+    result = result.replace(/&lt;/g, '\<');
+    result = result.replace(/&gt;/g, '\>');
 
     return result;
   }
