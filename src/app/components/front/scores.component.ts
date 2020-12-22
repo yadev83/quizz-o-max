@@ -1,41 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Score } from 'src/app/objects/score';
+import { ScoresService } from 'src/app/services/scores.service';
 
 @Component({
   selector: 'qom-scores',
   template: `
     <div class="flex-container-col center">
       <div class="flex-item">
-        <h1>Highscores for Category 0</h1>
+        <h1>Highscores</h1>
         <table>
           <tr>
             <th>Username</th>
-            <th>Time spent (mm:ss)</th>
             <th>Answer ratio</th>
             <th>Final Score</th>
           </tr>
-          <tr>
-            <td>John Doe</td>
-            <td>12:50</td>
-            <td>8/10</td>
-            <td>650</td>
-          </tr>
-          <tr>
-            <td>John Doe</td>
-            <td>12:50</td>
-            <td>8/10</td>
-            <td>650</td>
-          </tr>
-          <tr>
-            <td>John Doe</td>
-            <td>12:50</td>
-            <td>8/10</td>
-            <td>650</td>
-          </tr>
-          <tr>
-            <td>John Doe</td>
-            <td>12:50</td>
-            <td>8/10</td>
-            <td>650</td>
+          <tr *ngFor="let score of scores">
+            <td>{{score.uname}}</td>
+            <td>{{score.valid_answers}}/{{score.nb_questions}}</td>
+            <td>{{score.amount}}</td>
           </tr>
         </table>
       </div>
@@ -46,9 +28,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoresComponent implements OnInit {
 
-  constructor() { }
+  scores : Array<Score>;
+
+  constructor(public scoresService: ScoresService) {}
 
   ngOnInit(): void {
+    this.scores = this.scoresService.scores;
   }
 
 }

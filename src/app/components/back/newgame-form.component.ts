@@ -68,6 +68,7 @@ export class NewgameFormComponent implements OnInit {
     this.nbQuestions = newgameData.numberOfQuestions;
     this.category = newgameData.category;
     this.difficulty = newgameData.difficulty;
+    this.uname = newgameData.uname;
 
     this.newgameForm.reset();
     this.showForm = false;

@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   openquizz: 'https://opentdb.com/api.php?',
   categories: 'https://opentdb.com/api_category.php',
-  localScoreApi: 'localhost:3000/scores'
+  localScoreApi: 'http://localhost:3000/scores/'
 };
 
 /*

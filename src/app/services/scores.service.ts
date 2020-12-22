@@ -32,6 +32,8 @@ export class ScoresService {
   create(score: Score){
     this.http.post<Score>(environment.localScoreApi, score).subscribe((data) => {
       console.log('POST request successful ', data);
+    }, (error) => {
+      console.log('POST request raised an error ', error);
     });
     this.scores.push(score);
   }

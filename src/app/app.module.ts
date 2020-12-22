@@ -27,6 +27,7 @@ import { ScoresComponent } from './components/front/scores.component';
 import { AboutComponent } from './components/front/about.component';
 import { NewgameFormComponent } from './components/back/newgame-form.component';
 import { QuizzConclusionComponent } from './components/front/quizz-conclusion.component';
+import { ScoresService } from './services/scores.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { QuizzConclusionComponent } from './components/front/quizz-conclusion.co
     ReactiveFormsModule,
     MatSnackBarModule
   ],
-  providers: [QuizzapiService],
+  providers: [ScoresService, QuizzapiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

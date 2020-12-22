@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Question } from 'src/app/objects/question';
 import { Score } from 'src/app/objects/score';
+import { ScoresService } from 'src/app/services/scores.service';
 
 @Component({
   selector: 'qom-quizz-conclusion',
@@ -34,8 +35,9 @@ export class QuizzConclusionComponent implements OnInit {
 
   @Output() replay = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(public scoresService: ScoresService) { }
 
   ngOnInit(): void {
+    this.scoresService.create(this.score);
   }
 }
