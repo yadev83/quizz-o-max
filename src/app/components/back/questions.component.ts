@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Question } from 'src/app/objects/question';
 import { Score } from 'src/app/objects/score';
 import { QuizzapiService } from 'src/app/services/quizzapi.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'qom-questions',
@@ -33,7 +34,7 @@ export class QuestionsComponent implements OnInit {
 
   @Output() finished = new EventEmitter<number>();
 
-  constructor(public quizzService: QuizzapiService) {
+  constructor(private _snackBar: MatSnackBar, public quizzService: QuizzapiService) {
     if(this.cat != -1)
       this.score_step = this.score_step * 0.5;
   }
@@ -53,16 +54,26 @@ export class QuestionsComponent implements OnInit {
       }
     }
 
-    if(event == -1)
+    if(event == -1){
       this.score.invalidateQuestion(this.quizzService.getQuestions()[this.current_question-1]);
-    else if(event == 1)
+      this.openSnackBar("Wrong answer ! You lost " + this.score.evaluateQuestion(this.quizzService.getQuestions()[this.current_question-1]), "Dismiss");
+    }
+    else if(event == 1){
+      this.openSnackBar("Good answer ! You got " + this.score.evaluateQuestion(this.quizzService.getQuestions()[this.current_question-1]), "Dismiss");
       this.score.validateQuestion(this.quizzService.getQuestions()[this.current_question-1]);
+    }
 
     if(this.current_question != this.quizzService.getQuestions().length){
       this.current_question++;
     }else{
       this.finished.emit(this.score.amount);
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 }

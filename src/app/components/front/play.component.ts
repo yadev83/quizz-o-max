@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizzapiService } from 'src/app/services/quizzapi.service';
 
+
 @Component({
   selector: 'qom-play',
   template: `
