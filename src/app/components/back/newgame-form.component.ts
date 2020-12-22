@@ -31,7 +31,9 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
             <option value="hard">Hard</option>
           </select>
         </div>
-        <button class="button" mat-button type="submit">Play</button>
+        <div class="flex-item">
+          <button class="button" mat-button type="submit">Play</button>
+        </div>
       </form>
     </div>
   `,
@@ -42,7 +44,7 @@ export class NewgameFormComponent implements OnInit {
   newgameForm;
   showForm = true;
 
-  nbQuestions = 20;
+  nbQuestions = 10;
   category = -1;
   difficulty = "Any Difficulty";
 

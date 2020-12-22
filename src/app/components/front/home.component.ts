@@ -16,8 +16,7 @@ import { Component, OnInit } from '@angular/core';
             Taking quizzes is the best way to learn new things and improve your general culture, so why not trying it ?
             A score is given to you at the end of the quizz and it can be saved to the ladderboard if you wish.<br />
             Score calculation is simple : You start with a certain amount of points, for every good answer,
-            you get some more points, wrong answers will make you lose some and as the time passes, you lose some of
-            your precious points, so answering faster will grant a better score in the end.<br />
+            you get some more points, wrong answers will make you lose some<br />
             What are you waiting for ? Go and test yourself now !
           </p>
         </div>
@@ -33,16 +32,22 @@ import { Component, OnInit } from '@angular/core';
           <img class="center" src="assets/play-demo-1.gif" alt="How to start a new game ?" width="33%"/>
           <p>
             Doing so will bring up a page containing a form to fill in with parameters for your game. Number of questions, Theme,
-            Difficulty, Type of questions : You can customize the quizzes as you wish !
+            Difficulty : You can customize the quizzes as you wish !
           </p>
           <img class="center" src="assets/play-demo-2.gif" alt="Customizing your game" width="33%">
           <p>
-            If you like to compete with others, instead of customizing your own game, you can also pick a "competition preset".
-            There are multiple presets to test yourself and these are made to allow for competition.
-            You cannot store your score on a customized quizz but only if you use a competition preset and you will be compared to
-            other people who played on the same preset.
+            If you like to compete with others, You may want to get the highest score possible ! Score is calculated pretty simply.
+            By default, every question has a value of <b>50 points</b>. Hard questions has a value of <b>75 points</b> and easy questions
+            weighs <b>25 points</b>. You start the game with the base points given by each question (i.e if playing for 10 normal questions,
+            you will start with 500 points) Answering correctly will double the points a question weighs and answering wrongly will remove
+            the points that question gave you. (In fact, if you do all wrong you'll end up with 0 points and if you do all right, you'll double
+            the number of points you had at the beggining).<br />
+            The best way to make a big score is to play on "Any Category" mode because locking a category will reduce the number of points a
+            question weighs (to keep it fair). Also pick the "Hard" difficulty mode as it is only made of hard questions that are more valuable.
+            And finally, pick a reasonable amount of questions because the more you have, the more possible score you can make, but also the more
+            you can fail...
           </p>
-          <img class="center" src="assets/play-demo-3.gif" alt="Choosing a competition preset" width="33%">
+          <hr />
           <p>
             After you are sure with customization of the game, you can click the "Play !" button and the quizz will start. From now,
             it is quite simple : When a question appear on your screen, you must click on the answer you think is the correct one.

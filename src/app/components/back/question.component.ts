@@ -8,15 +8,16 @@ import { Question } from 'src/app/objects/question';
   template: `
       <div *ngIf="question != undefined">
         <div class="flex-container-col center">
-          <div class="flex-item space-top">
+          <div class="question-details">
             <h3 class="category">{{question.category}}</h3>
-            <h3 class="difficulty">{{question.difficulty}}</h3>
+            <h3 class="difficulty">{{question.difficulty}} - (+{{value}})</h3>
+          </div>
+          <div class="answer-container space-top">
             <p class="question">{{question.question}}</p>
           </div>
-          <hr />
-          <div class="flex-item space-top">
-            <button mat-button *ngFor="let answer of question.answers" (click)="answer===question.correct_answer ? right() : wrong()">
-                {{answer}}
+          <div class="answer-container inner-component space-top">
+            <button *ngFor="let answer of question.answers" mat-button (click)="answer===question.correct_answer ? right() : wrong()">
+              {{answer}}
             </button>
           </div>
         </div>
@@ -28,6 +29,7 @@ import { Question } from 'src/app/objects/question';
 })
 export class QuestionComponent implements OnInit {
   @Input() question: Question;
+  @Input() value: number;
 
   @Output() answering = new EventEmitter<number>();
 

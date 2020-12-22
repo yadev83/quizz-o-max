@@ -8,10 +8,13 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
 @Component({
   selector: 'qom-questions',
   template: `
-    <h1>Quizz : Question {{current_question}} / {{this.quizzService.getQuestions().length}} - Score : {{score.amount}}</h1>
-    <div class="flex-container-col center">
+      <div class="flex-container-col center">
+      <h1 class="flex-item">Quizz : Question {{current_question}} / {{this.quizzService.getQuestions().length}} - Score : {{score.amount}}</h1>
       <div class="flex-item" *ngIf="this.quizzService.getQuestions().length!=0">
-        <qom-question (answering)="onAnswer($event)" [question]="this.quizzService.getQuestions()[current_question-1]"></qom-question>
+      <div *ngIf="this.current_question > 0;then value_question else init_content"></div>
+        <ng-template #init_content><qom-question (answering)="onAnswer($event)" [question]="this.quizzService.getQuestions()[current_question-1]"></qom-question></ng-template>
+        <ng-template #value_question><qom-question (answering)="onAnswer($event)" [question]="this.quizzService.getQuestions()[current_question-1]"
+        [value]="this.score.evaluateQuestion(this.quizzService.getQuestions()[this.current_question-1])"></qom-question></ng-template>
       </div>
     </div>
   `,

@@ -21,7 +21,7 @@ export class Score{
     this.amount -= this.evaluateQuestion(question);
   }
 
-  private evaluateQuestion(question: Question): number{
+  evaluateQuestion(question: Question): number{
     if(question.difficulty == "easy"){
       return this.base_value * 0.5;
     }
