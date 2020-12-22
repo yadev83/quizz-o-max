@@ -9,9 +9,10 @@ To install this app on your own server, you will need to install multiple tools.
 ```
 sudo apt install npm && npm install angular
 ```
-- Then, install typescript library
+- Then, install typescript library and the angular CLI globally (to use ng commands)
 ```
 npm install typescript
+npm install -g @angular/cli
 ```
 - Get a copy of the source code from this github page (either using git clone or by downloading the ZIP file for the master branch) and install the dependancies for this project (from the root of the app)
 ```
