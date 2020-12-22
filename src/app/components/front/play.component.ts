@@ -11,7 +11,7 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
     </div>
 
     <div *ngIf="end">
-      You finished the quizz with a score of : {{final_score}}
+      <qom-quizz-conclusion (replay)="onQuizzRestart($event)" [score]="quizz.score" [questions]="quizz.questions"></qom-quizz-conclusion>
     </div>
   `,
   styles: [
@@ -20,7 +20,7 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
 export class PlayComponent implements OnInit {
   end: boolean = false;
 
-  final_score;
+  quizz;
 
   constructor(public quizzService: QuizzapiService) { }
 
@@ -29,6 +29,12 @@ export class PlayComponent implements OnInit {
 
   onQuizzEnd(event){
     this.end = true;
-    this.final_score = event;
+    this.quizz = event;
+  }
+
+  onQuizzRestart(event){
+    if(event){
+      window.location.reload();
+    }
   }
 }

@@ -29,12 +29,12 @@ import { Component, OnInit } from '@angular/core';
           <p>
             To play the game and start a quizz, it is very simple ! First, click the menu icon and choose the "Play" button.
           </p>
-          <img class="center" src="assets/play-demo-1.gif" alt="How to start a new game ?" width="33%"/>
+          <img class="center" src="assets/play-demo-1.gif" alt="How to start a new game ?" width="45%"/>
           <p>
             Doing so will bring up a page containing a form to fill in with parameters for your game. Number of questions, Theme,
             Difficulty : You can customize the quizzes as you wish !
           </p>
-          <img class="center" src="assets/play-demo-2.gif" alt="Customizing your game" width="33%">
+          <img class="center" src="assets/play-demo-2.gif" alt="Customizing your game" width="45%">
           <p>
             If you like to compete with others, You may want to get the highest score possible ! Score is calculated pretty simply.
             By default, every question has a value of <b>50 points</b>. Hard questions has a value of <b>75 points</b> and easy questions
@@ -51,14 +51,15 @@ import { Component, OnInit } from '@angular/core';
           <p>
             After you are sure with customization of the game, you can click the "Play !" button and the quizz will start. From now,
             it is quite simple : When a question appear on your screen, you must click on the answer you think is the correct one.
-            Once you clicked, the right answer is highlighted and you either loose or gain score.
+            Once you clicked, a small popup tells you if you were right or wrong and the next question appears.
           </p>
-          <img class="center" src="assets/play-demo-4.gif" alt="Playing the game" width="33%">
+          <img class="center" src="assets/play-demo-3.gif" alt="Playing the game" width="45%">
           <p>
-            At the end of the quizz, your global score is written on the screen and you can choose to store it in the ladderboard
-            if you played on a competition preset. From now, you can restart the same quizz or access the home page again !
+            At the end of the quizz, your global score is written on the screen and a recap of your quizz session appears.
+            You can see now the right answers for every question and you can see aswell which questions you failed and which you had right.
+            You choose to play again with a fresh quizz or you can open the menu and leave for another page.
           </p>
-          <img class="center" src="assets/play-demo-5.gif" alt="End of the game" width="33%">
+          <img class="center" src="assets/play-demo-4.gif" alt="End of the game" width="45%">
         </div>
       </div>
     </div>

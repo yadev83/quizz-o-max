@@ -7,6 +7,7 @@ export class Question{
   incorrect_answers: Array<string>;
 
   answers: Array<string>;
+  result: boolean;
 
   constructor(category, type, difficulty, question, correct_answer, incorrect_answers){
     this.category = category;
@@ -15,6 +16,7 @@ export class Question{
     this.question = this.format_html(question);
     this.correct_answer =  this.format_html(correct_answer);
     this.incorrect_answers = incorrect_answers;
+    this.result = false;
 
     this.answers = [];
     for(let option of incorrect_answers){

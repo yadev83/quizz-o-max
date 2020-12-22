@@ -26,6 +26,7 @@ import { PlayComponent } from './components/front/play.component';
 import { ScoresComponent } from './components/front/scores.component';
 import { AboutComponent } from './components/front/about.component';
 import { NewgameFormComponent } from './components/back/newgame-form.component';
+import { QuizzConclusionComponent } from './components/front/quizz-conclusion.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NewgameFormComponent } from './components/back/newgame-form.component';
     ScoresComponent,
     AboutComponent,
     NewgameFormComponent,
+    QuizzConclusionComponent,
   ],
   imports: [
     BrowserModule,

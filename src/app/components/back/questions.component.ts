@@ -5,6 +5,7 @@ import { Question } from 'src/app/objects/question';
 import { Score } from 'src/app/objects/score';
 import { QuizzapiService } from 'src/app/services/quizzapi.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { QuizzResults } from 'src/app/objects/quizzResults';
 
 @Component({
   selector: 'qom-questions',
@@ -32,7 +33,7 @@ export class QuestionsComponent implements OnInit {
   current_question = 0;
   score: Score;
 
-  @Output() finished = new EventEmitter<number>();
+  @Output() finished = new EventEmitter<QuizzResults>();
 
   constructor(private _snackBar: MatSnackBar, public quizzService: QuizzapiService) {
     if(this.cat != -1)
@@ -57,16 +58,18 @@ export class QuestionsComponent implements OnInit {
     if(event == -1){
       this.score.invalidateQuestion(this.quizzService.getQuestions()[this.current_question-1]);
       this.openSnackBar("Wrong answer ! You lost " + this.score.evaluateQuestion(this.quizzService.getQuestions()[this.current_question-1]), "Dismiss");
+      this.quizzService.getQuestions()[this.current_question-1].result = false;
     }
     else if(event == 1){
       this.openSnackBar("Good answer ! You got " + this.score.evaluateQuestion(this.quizzService.getQuestions()[this.current_question-1]), "Dismiss");
       this.score.validateQuestion(this.quizzService.getQuestions()[this.current_question-1]);
+      this.quizzService.getQuestions()[this.current_question-1].result = true;
     }
 
     if(this.current_question != this.quizzService.getQuestions().length){
       this.current_question++;
     }else{
-      this.finished.emit(this.score.amount);
+      this.finished.emit(new QuizzResults(this.score.amount, this.quizzService.getQuestions()));
     }
   }
 
