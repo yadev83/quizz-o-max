@@ -3,6 +3,7 @@ import { Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category } from 'src/app/objects/category';
 import { QuizzapiService } from 'src/app/services/quizzapi.service';
 
@@ -16,8 +17,8 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
           <input required id="uname" type="text" formControlName="uname">
         </div>
         <div class="flex-item">
-          <label for="numberOfQuestions">Number of questions</label>
-          <input required id="numberOfQuestions" type="number" formControlName="numberOfQuestions">
+          <label for="numberOfQuestions">Number of questions (MAX=50)</label>
+          <input required id="numberOfQuestions" type="number" min="1" max="50" formControlName="numberOfQuestions">
         </div>
         <div class="flex-item">
           <label for="category">Category</label>
@@ -55,7 +56,7 @@ export class NewgameFormComponent implements OnInit {
 
   categories: Array<Category> = [];
 
-  constructor(private formBuilder: FormBuilder, public quizzapi: QuizzapiService) {
+  constructor(private _snackBar: MatSnackBar, private formBuilder: FormBuilder, public quizzapi: QuizzapiService) {
     this.newgameForm = this.formBuilder.group({
       numberOfQuestions: this.nbQuestions,
       category: this.category,
@@ -65,17 +66,26 @@ export class NewgameFormComponent implements OnInit {
   }
 
   onSubmit(newgameData){
-    this.nbQuestions = newgameData.numberOfQuestions;
-    this.category = newgameData.category;
-    this.difficulty = newgameData.difficulty;
-    this.uname = newgameData.uname;
+    if(this.newgameForm.valid && newgameData.numberOfQuestions > 0 && newgameData.numberOfQuestions <= 50){
+      this.nbQuestions = newgameData.numberOfQuestions;
+      this.category = newgameData.category;
+      this.difficulty = newgameData.difficulty;
+      this.uname = newgameData.uname;
 
-    this.newgameForm.reset();
-    this.showForm = false;
+      this.newgameForm.reset();
+      this.showForm = false;
+    }else{
+      this.openSnackBar("The form is invalid. Please verify every input", "Dismiss");
+    }
   }
 
   ngOnInit(): void {
     this.categories = this.quizzapi.getCategories();
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 }
