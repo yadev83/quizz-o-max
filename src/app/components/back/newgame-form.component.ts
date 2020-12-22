@@ -12,6 +12,10 @@ import { QuizzapiService } from 'src/app/services/quizzapi.service';
     <div class="flex-container-col center">
       <form *ngIf="showForm" [formGroup]="newgameForm" (ngSubmit)="onSubmit(newgameForm.value)">
         <div class="flex-item">
+          <label for="uname">Username</label>
+          <input required id="uname" type="text" formControlName="uname">
+        </div>
+        <div class="flex-item">
           <label for="numberOfQuestions">Number of questions</label>
           <input required id="numberOfQuestions" type="number" formControlName="numberOfQuestions">
         </div>
@@ -47,6 +51,7 @@ export class NewgameFormComponent implements OnInit {
   nbQuestions = 10;
   category = -1;
   difficulty = "Any Difficulty";
+  uname = "Quizzer";
 
   categories: Array<Category> = [];
 
@@ -54,7 +59,8 @@ export class NewgameFormComponent implements OnInit {
     this.newgameForm = this.formBuilder.group({
       numberOfQuestions: this.nbQuestions,
       category: this.category,
-      difficulty: this.difficulty
+      difficulty: this.difficulty,
+      uname: this.uname
     });
   }
 

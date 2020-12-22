@@ -6,6 +6,7 @@ import { Score } from 'src/app/objects/score';
 import { QuizzapiService } from 'src/app/services/quizzapi.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { QuizzResults } from 'src/app/objects/quizzResults';
+import { fromEventPattern } from 'rxjs';
 
 @Component({
   selector: 'qom-questions',
@@ -27,6 +28,7 @@ export class QuestionsComponent implements OnInit {
   @Input() nb: number;
   @Input() cat: number;
   @Input() difficulty: string;
+  @Input() uname: string;
 
   score_step: number = 50;
 
@@ -50,6 +52,8 @@ export class QuestionsComponent implements OnInit {
     if(event == -2){
       if(this.current_question == 0){
         this.score = new Score(this.quizzService.getQuestions(), 50);
+        this.score.nb_questions = this.quizzService.getQuestions().length;
+        this.score.uname = this.uname;
       }else{
         console.error("Unexpected answer from the question page");
       }
@@ -69,7 +73,12 @@ export class QuestionsComponent implements OnInit {
     if(this.current_question != this.quizzService.getQuestions().length){
       this.current_question++;
     }else{
-      this.finished.emit(new QuizzResults(this.score.amount, this.quizzService.getQuestions()));
+      this.score.valid_answers = 0;
+      for(let question of this.quizzService.getQuestions()){
+        if(question.result)
+          this.score.valid_answers++;
+      }
+      this.finished.emit(new QuizzResults(this.score, this.quizzService.getQuestions()));
     }
   }
 

@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Question } from 'src/app/objects/question';
+import { Score } from 'src/app/objects/score';
 
 @Component({
   selector: 'qom-quizz-conclusion',
   template: `
     <div class="flex-container-col center">
-      <h1>You finished the quizz with a score of "{{score}}" points !</h1>
+      <h1>Well done, {{score.uname}} ! You finished the quizz with a score of "{{score.amount}}" points !</h1>
+      <h1>You answered correctly to {{score.valid_answers}} out of {{score.nb_questions}} questions !</h1>
       <button class="inner-element" (click)="replay.emit(true)" mat-button>Play again !</button>
       <div *ngFor="let question of questions">
         <div class="flex-item">
@@ -28,7 +30,7 @@ import { Question } from 'src/app/objects/question';
 })
 export class QuizzConclusionComponent implements OnInit {
   @Input() questions: Array<Question>;
-  @Input() score: number;
+  @Input() score: Score;
 
   @Output() replay = new EventEmitter<boolean>();
 

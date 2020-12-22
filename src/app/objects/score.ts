@@ -4,6 +4,10 @@ export class Score{
   amount: number;
   base_value: number;
 
+  uname: string;
+  nb_questions: number;
+  valid_answers: number;
+
   constructor(question_set: Array<Question>, base_value: number){
     this.base_value = base_value;
     this.amount = 0;

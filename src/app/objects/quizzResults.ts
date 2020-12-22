@@ -1,7 +1,8 @@
 import { Question } from './question';
+import { Score } from './score';
 
 export class QuizzResults{
-  score: number;
+  score: Score;
   questions: Array<Question>;
 
   constructor(score, questions){
